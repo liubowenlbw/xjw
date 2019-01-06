@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dazuoye</title>
+	<link rel="stylesheet" type="text/css" href="dazuoye.css">
+   <style>
+   * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        body {
+            padding: 20px;
+        }
+        #container {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            border: 0px solid #333;
+            overflow: hidden;
+        }
+        #list {
+            position: absolute;
+            z-index: 1;
+            width: 6400px;
+            height: 400px;
+        }
+        #list img {
+            float: left;
+            width: 800px;
+            height: 400px;
+        }
+        #buttons {
+            position: absolute;
+            left: 350px;
+            bottom: 20px;
+            z-index: 2;
+            height: 10px;
+            width: 120px;
+        }
+        #buttons span {
+            float: left;
+            margin-right: 5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+        #buttons .on {
+            background: orangered;
+        }
+        .arrow {
+            position: absolute;
+            top: 180px;
+            z-index: 2;
+            display: none;
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 39px;
+            text-align: center;
+            color: #fff;
+            background-color: RGBA(0, 0, 0, .3);
+            cursor: pointer;
+        }
+        .arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+        #container:hover .arrow {
+            display: block;
+        }
+        #prev {
+            left: 20px;
+        }
+        #next {
+            right: 20px;
+        }
+        #scrollBox{
+            width: 209px;
+            height: 322px;
+            font-size: 14px;
+            border-bottom: 1px solid #ebeae7;
+            position: relative; 
+            overflow: hidden;   
+}
+#con1,#con2{
+    width: 168px;
+    height: 380px;
+    margin-left: 10px;
+    float: left;
+    font-size: 13px;
+    color: #ff4d04;
+}
+#scrollBox li{
+    height:15px;
+    line-height:15px;
+    float: left;
+}
+#gonggao1{
+    list-style-type: none;
+    margin-top: 14px;
+}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var list = document.getElementById('list');
+            var buttons = document.getElementById('buttons').getElementsByTagName('span');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var index = 1;
+            var timer;
+            function animate(offset) {
+                var newLeft = parseInt(list.style.left) + offset;
+                list.style.left = newLeft + 'px';
+                if (newLeft > -800) {
+                    list.style.left = -4800 + 'px';
+                }
+                if (newLeft < -4800) {
+                    list.style.left = -800 + 'px';
+                }
+            }
+            function play() {
+                timer = setInterval(function () {
+                    next.onclick();
+                }, 2000)
+            }
+            function stop() {
+                clearInterval(timer);
+            }
+            function buttonsShow() {
+                for (var i = 0; i < buttons.length; i++) {
+                    if (buttons[i].className == "on") {
+                        buttons[i].className = "";
+                    }
+                }
+                buttons[index - 1].className = "on";
+            }
+            prev.onclick = function () {
+                index -= 1;
+                if (index < 1) {
+                    index = 6
+                }
+                buttonsShow();
+                animate(800);
+            };
+            next.onclick = function () {
+                index += 1;
+                if (index > 6) {
+                    index = 1
+                }
+                animate(-800);
+                buttonsShow();
+            };
+            for (var i = 0; i < buttons.length; i++) {
+                (function (i) {
+                    buttons[i].onclick = function () {
+                        var clickIndex = parseInt(this.getAttribute('index'));
+                        var offset = 800 * (index - clickIndex);
+                        animate(offset);
+                        index = clickIndex;
+                        buttonsShow();
+                    }
+                })(i)
+            }
+            container.onmouseover = stop;
+            container.onmouseout = play;
+            play();
+        }
+    </script>
+</head>
+<body>
+	<div class="top">
+		<span class="z">
+			帮5买,想帮帮
+		</span>
+      <div class="z1">
+         <div class="img1">
+            <a style="background: url(任务所需小图/img/common_min.png) 0 -31px; margin-left: 360px;" href="#"></a>
+         </div>
+         <div class="img2">
+            <a style="background: url(任务所需小图/img/common_min.png) 0 -53px;" href="#"></a>
+         </div>
+         <div class="img3">
+            <a style="background: url(任务所需小图/img/common_min.png) 0 -75px;" href="#"></a>
+         </div>
+      </div>
+      <div class="z2">                    
+         <a href="login.html" class="content p">登录</a>
+         <a href="register.html" class="content p">注册</a>
+         <a href="#" class="content p" style="background: url(任务所需小图/img/common_min.png) 0px -115px no-repeat; padding-left: 21px;">消息</a>
+         <a href="#" class="content p" style="background: url(任务所需小图/img/dingdan.jpg) 0 0px no-repeat; padding-left: 18px;">我的订单</a>
+         <a href="#" class="content p">我的订单</a>
+         <a href="#" class="content p">我的收藏</a>
+         <a href="#" class="content p">帮钻兑换</a>
+         <a href="#" class="content p" style="background: url(任务所需小图/img/phone.png) 0 0px no-repeat; padding-left: 12px;">手机版</a>
+         <a href="#" class="content p">帮5淘</a>
+         <a href="#" class="content p">客户服务</a>
+         <a href="#" class="content p" style="background: url(任务所需小图/img/gouwuche.jpg) 0 0px no-repeat; padding-left: 22px;">购物车</a>
+         <span style="margin-top: 10px;margin-left: 5px;color: #fe6c00;font-size: 7px;">0</span>
+      </div> 
+   </div>
+	<div class="box1">	
+	   <div class="box1-1">
+    	   <img src="任务所需小图/img/logo_03.jpg">
+       </div>
+       <div class="box1-2">     
+       	   <input class="a" placeholder="请输入商品网址或关键词，直通全网，快速帮5购!"><button class="b">搜全网</button>
+       	</div>
+       <div class="box1-3">
+       	    <div class="c3">
+                <a class="c31" style="background: url(任务所需小图/img/common_min.png) 0 -97px;" href="#"></a>
+                <p class="c32">400-085-0505</p>
+             </div>
+             <div class="d3">
+                <a class="d31" style="background: url(任务所需小图/img/common_min.png) 0 -117px;" href="#"></a>
+                <p class="d32">mc@b5m.com</p>
+             </div>
+                <button class="e3"><img src="任务所需小图/img/wenhao.jpg">常见问题</button>
+       </div>
+       <div class="box1-4">
+       	    <span class="a1">洗发护发 | 日本纸尿裤 |</span>
+       	    <span>身体乳 | 内衣文胸 | </span>
+       	    <span class="b1">iPone 6S | iPad Air2 |</span>
+       	    <span>牛仔裤 | 奶粉 | 防晒霜 | 伞</span>
+       </div>
+   </div>
+   <div class="box2">
+   	    <div class="a2">
+   	    	全部商品分类
+   	    </div>
+   	    <div class="b2">
+   	    	<span>帮5赚</span>
+   	    	<span class="w">帮韩品</span>
+   	    	<span class="w">超划算</span>
+   	    	<span class="w">品牌货栈</span>
+   	    	<span class="w">韩国馆</span>
+   	    	<span class="w">帮社区</span>
+   	    	<span class="w">1元兑换</span>
+   	    </div>
+   </div>
+   <div class="box3">
+   	   <div class="a3">
+   	   	   <p>当</p>
+   	   	   <p>前</p>
+   	   	   <p>搜</p>
+   	   	   <p>索</p>
+   	   	   <p>电</p>
+   	   	   <p>商</p>
+   	   	   <div class="c"></div>
+   	   	   <p>全</p>
+   	   	   <p>网</p>
+   	   </div>
+   	   <div class="b3">
+   	   	   <ul>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">手机</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">数码</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">影音</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">配件</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">电脑</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">网络</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">办公</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">打印</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">家电</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">厨卫</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">生活</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">个户</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">园艺</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">家具</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">家纺</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">家饰</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">彩妆</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">面部</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">身体</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">香水</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">男装</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">女装</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">内衣</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">其他</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">女包</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">男包</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">女鞋</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">男鞋</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">运动</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">户外</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">装备</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">服饰</a>
+   	   	   	</li>
+   	   	    <li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">儿童</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">婴儿</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">食品</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">玩具</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">乐器</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">家宠</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">收藏</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">鲜花</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">保健</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">理疗</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">药品</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">眼镜</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">果蔬</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">礼品</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">粮油</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">特产</a>
+   	   	   	</li>
+   	   	   	<li>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">文艺</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">生活</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">科技</a>
+   	   	   		<a href="" style="color: #000; font-size: 5px; padding-left: 2px;">教育</a>
+   	   	   	</li>
+   	   	   </ul>
+   	   </div>
+   </div>
+   <div class="box4">
+   	  <div id="container">
+    <div id="list" style="left: -800px;">
+        <img src="任务所需小图/img/bann1.jpeg" alt="1"/>
+        <img src="任务所需小图/img/bann1.jpeg" alt="1"/>
+        <img src="任务所需小图/img/bann2.jpeg" alt="2"/>
+        <img src="任务所需小图/img/bann3.jpeg" alt="3"/>
+        <img src="任务所需小图/img/bann4.jpeg" alt="4"/>
+        <img src="任务所需小图/img/bann5.jpeg" alt="5"/>
+        <img src="任务所需小图/img/bann6.png" alt="5"/>
+        <img src="任务所需小图/img/bann6.png" alt="5"/>
+    </div>
+    <div id="buttons">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+        <span index="6"></span>
+    </div>
+       <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+       <a href="javascript:;" id="next" class="arrow">&gt;</a>
+    </div>
+
+   </div>
+   <div class="box5">
+      <div class="box5-0">
+         <span class="bv"><img src="任务所需小图/img/ico-notice.png">帮帮快讯<img src="任务所需小图/img/jiantou.jpg"></span>
+      </div>
+      <div class="box5-1">
+   	 <div id="scrollBox">
+        <ul id="con1">
+            <li id="gonggao1">[公告]帮购及VIP服务调整1</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整2</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整3</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整4</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整5</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整6</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整7</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整8</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整9</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整10</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整11</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整12</li>
+                        <li id="gonggao1">[公告]帮购及VIP服务调整13</li>
+           </ul>
+        <ul id="con2"></ul>
+     </div>
+     <script type="text/javascript">            
+                var area =document.getElementById('scrollBox');
+                var con1 = document.getElementById('con1');
+                var con2 = document.getElementById('con2');
+                con2.innerHTML=con1.innerHTML;
+                function scrollUp(){
+                if(area.scrollTop>=con1.offsetHeight){
+                    area.scrollTop=0;
+                }else{
+                    area.scrollTop++
+                }
+                }                
+                var time = 50;
+                var mytimer=setInterval(scrollUp,time);
+                area.onmouseover=function(){
+                    clearInterval(mytimer);
+                }
+                area.onmouseout=function(){
+                    mytimer=setInterval(scrollUp,time);
+                }
+        </script>
+     </div>
+     <div class="a5">
+        <ul>
+           <li><img src="任务所需小图/img/phone.png">话费充值 <span class="a50">(可使用超级帮钻)</span></li>
+           <li><input style="height: 25px; width: 125px; margin-left: 15px;" type="text" placeholder="请输入手机号"></li>
+           <li></li>
+           <li><button class="a5button">充值</button></li>
+        </ul>
+     </div>
+   </div>
+   <div class="box6">
+   	    <div class="a6">
+   	    	<img src="任务所需小图/img/dd_03.jpg">
+   	    	<div class="span">什么是帮5购</div>
+   	    </div>
+   	    <div class="b6">
+   	    	<img src="任务所需小图/img/dd_06.jpg">
+   	    	<div class="spa">帮5购提供什么服务</div>
+   	    </div>
+   	    <div class="c6">
+   	    	<img src="任务所需小图/img/dd_08.jpg">
+   	    	<div class="sp">如何开通帮5购服务</div>
+   	    </div>
+   </div>
+   <div class="box7">
+   	    <div class="a7">
+   	    	<div class="a71"><img src="任务所需小图/img/1(1).jpg"></div>
+   	    	<div class="a72"><img src="任务所需小图/img/2.jpg"></div>
+   	    	<div class="a73"><img src="任务所需小图/img/3(1).png"></div>
+            <div class="b7">
+              <a href="xiangqing.html">
+                <img src="任务所需小图/img/qqq.png">
+              </a>
+            </div>  	    	
+   	    </div>
+   </div>
+   <div class="box8">
+   	    <div class="a8">
+   	    	<img src="任务所需小图/img/loginB.jpg">
+   	    </div>
+   	    <div class="b8">
+   	    	<ul class="p8">
+   	    		<li>
+   	    		  <a href="" style="color: #000; padding-left: 110px;">购物指南</a>
+   	    		  <a href="" style="color: #000; padding-left: 70px;">支付相关</a>
+   	    		  <a href="" style="color: #000; padding-left: 70px;">售后服务</a>
+   	    		  <a href="" style="color: #000; padding-left: 70px;">VIP服务</a>
+   	    		  <a href="" style="color: #000; padding-left: 70px;">帮韩品</a>
+   	    		  <a href="" style="color: #000; padding-left: 70px;">更多</a>
+   	    	   </li>
+   	    	</ul>
+   	    	<ul class="t8">
+   	    		<li>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">如何下单</a>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">支付方式</a>
+   	    		  <a href="" style="color: #000; padding-left: 90px;">取消订单</a>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">VIP优惠</a>
+   	    		  <a href="" style="color: #000; padding-left: 83px;">韩国正品</a>
+   	    		  <a href="" style="color: #000; padding-left: 67px;">手机APP</a>
+   	    		</li>
+   	    		<li>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">帮5购流程</a>
+   	    		  <a href="" style="color: #000; padding-left: 72px;">安全设置</a>
+   	    		  <a href="" style="color: #000; padding-left: 90px;">申请售后</a>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">如何成为VIP</a>
+   	    		  <a href="" style="color: #000; padding-left: 60px;">闪电发货</a>
+   	    		  <a href="" style="color: #000; padding-left: 67px;">帮5采APP</a>
+   	    		</li>
+   	    		<li>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">订单查询</a>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">账户信息</a>
+   	    		  <a href="" style="color: #000; padding-left: 90px;">退货流程</a>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">超级帮钻</a>
+   	    		  <a href="" style="color: #000; padding-left: 77px;">帮韩品售后</a>
+   	    		  <a href="" style="color: #000; padding-left: 55px;">帮5淘插件</a>
+   	    		</li>
+   	    		<li>
+   	    		  <a href="" style="color: #000; padding-left: 80px;">物流配送</a>
+   	    		  <a href="" style="color: #000; padding-left: 220px;">退款相关</a>
+   	    		  <a href="" style="color: #000; padding-left: 330px;">其他</a>
+   	    		</li>
+   	    	</ul>
+   	    </div>
+   	    <div class="c8">
+   	    	<img src="任务所需小图/img/erweima.jpg">
+   	    </div>
+   </div>
+
+   <div class="box9">
+   	   <div class="a9">
+             <ul>
+                <li>
+                   <a href="" style="color: #c4a391;">关于帮5买</a> |
+                   <a href="" style="color: #c4a391;">联系我们 </a> |
+                   <a href="" style="color: #c4a391;">合作商家 </a> |
+                   <a href="" style="color: #c4a391;">友情链接 </a> |
+                   <a href="" style="color: #c4a391;">加入我们 </a> |
+                   <a href="" style="color: #c4a391;">移动应用 </a> |
+                   <a href="" style="color: #c4a391;">热门 </a> |
+                   <a href="" style="color: #c4a391;">广告联盟 </a> |
+                   <a href="" style="color: #c4a391;">使用条款 </a> 
+                </li>
+             </ul>  
+         </div>
+         <div class="b9">
+            Copyright@ 2011-2015 B5M.COM.All rights reserved.Powerd by B5Msoft Co.Ltd
+         </div>
+         <div class="c9">
+            增值电信业务经营许可证:沪B2-20130065号|中华人民国和国互联网药品信息服务资格证书-非经营性-2013-0034沪卫(中医)网审【2015】10032号 沪ICP备10034776号-3|食品流通许可证
+         </div>
+         <div class="d9">
+            SP3101151410301755
+         </div>
+   </div>
+   <div class="box0">
+   	    <div class="a0">
+   	    	<img src="任务所需小图/img/bo1.gif">
+   	    	<img src="任务所需小图/img/bo2.png">
+   	    	<img src="任务所需小图/img/bo3.gif">
+   	    	<img src="任务所需小图/img/bo4.png">
+   	    	<img src="任务所需小图/img/bo5.png">
+   	    	<img src="任务所需小图/img/bo6.png">
+   	    	<img src="任务所需小图/img/bo7.png">
+   	    </div>
+   </div>	
+</body>
+</html>
