@@ -6,22 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link href="https://cdn.bootcss.com/foundation/6.5.3/css/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-  <div class="full-container">
-    <div class="grid-x">
-      <div class="cell small-1 medium-2 large-3"></div>
-      <div class="cell small-10 medium-8 large-6">
-        <form onsubmit="return false;">
-          <label for="upload-file" class="button">上传图片</label>
-          <input type="file" id="upload-file" class="show-for-sr" value="" onchange="uploadImage(this);">
-        </form>
-        <p id="ret-tip" class="help-text" style="color:#4a4a4f;"></p>
+  <div class="white">
+    <div class="full-container">
+      <div class="grid-x">
+        <div class="cell small-1 medium-2 large-3"></div>
+        <div class="cell small-10 medium-8 large-6">
+          <form onsubmit="return false;">
+            <label for="upload-file" class="button">上传图片</label>
+            <input type="file" id="upload-file" class="show-for-sr" value="" onchange="uploadImage(this);">
+          </form>
+          <p id="ret-tip" class="help-text" style="color:#4a4a4f;"></p>
+        </div>
+        <div class="cell small-1 medium-2 large-3"></div>
       </div>
-      <div class="cell small-1 medium-2 large-3"></div>
     </div>
-    
   </div>
+
   <script>
     function uploadImage (t) {
       document.getElementById('ret-tip').innerHTML = '上传中···';
