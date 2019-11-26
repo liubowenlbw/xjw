@@ -15,22 +15,109 @@ html{
 	top:0px;
 	/*改*/
 	margin: 0 auto;
-	height: 1000px;
+	height: 100%;
 	width: 100%;
 	background-color: blue;
 	position: relative;
 }
 .one{
 	margin: 0 auto;
-	width: 1519px;
-	height: 138px;
+	width: 1510px;
+	height: 364px;
 	background-color: #ffffff;
 }
-/*.full-container{
+.full-container{
 	top:200px;
 	left: 0px;
-	height: 50px;
-	width: 50px;
+	height: 100px;
+	width: 100px;
 	background-color: green;
 	position: relative;
+}
+.button{ 
+    padding:40px;  
+    color: #428bca; 
+    text-align: center; 
+    vertical-align: middle;  
+    font-weight: 900; 
+    font-size:125% 
+}
+.button{
+    background: gold;
+    border: none;
+    border-radius: 50%;
+    width: 200px;
+    height: 100px;
+     
+}
+/*.twotwoone{
+	width: 800px;
+	height: 361px;
+	position: relative;
+	background-color: yellow;
 }*/
+.box{
+	margin: 0 auto;
+	width: 800px;
+	height: 361px;
+	/*margin: 3px auto;*/
+	/*................*/
+	position: relative;
+	overflow: hidden;
+	top:-120px;
+	background-color: green;
+}
+.slider{
+	width: 8400px;
+	position: absolute;
+	left: -800px;
+}
+.slide{
+	width: 800px;
+	overflow: hidden;
+	float: left;
+}
+.box>span{
+	display: block;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	top: 175px;
+	line-height: 50px;
+	/*background: rgb(255,0,0);*/
+	font-size: 30px;
+	position: absolute;
+	/* display: none; */
+	opacity: 0;
+	overflow: hidden;
+}
+#right img{
+	position: relative;
+	top:-60px;
+}
+#left{
+	left: 30px;
+}
+#right{
+	right: 30px;
+}
+.nav{
+	position: absolute;
+	left: 320px;
+	bottom: 20px;
+}
+.nav>li{
+	float: left;
+	width: 20px;
+	height: 20px;
+	background: #efeeec;
+	cursor: pointer;
+	margin: 0 3px;
+	border-radius: 50%;
+	text-align: center;
+}
+.nav .active{
+	background: red;
+}
