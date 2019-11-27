@@ -22,13 +22,13 @@ html{
 }
 .one{
 	margin: 0 auto;
-	width: 1510px;
-	height: 364px;
+	width: 1519px;
+	height: 1000px;
 	background-color: #ffffff;
 }
 .full-container{
-	top:200px;
-	left: 0px;
+	top:600px;
+	left: 100px;
 	height: 100px;
 	width: 100px;
 	background-color: green;
@@ -58,8 +58,8 @@ html{
 }*/
 .box{
 	margin: 0 auto;
-	width: 800px;
-	height: 361px;
+	width: 1519px;
+	height: 949px;
 	/*margin: 3px auto;*/
 	/*................*/
 	position: relative;
@@ -68,12 +68,12 @@ html{
 	background-color: green;
 }
 .slider{
-	width: 8400px;
+	width: 12152px;
 	position: absolute;
-	left: -800px;
+	left: -1519px;
 }
 .slide{
-	width: 800px;
+	width: 1519px;
 	overflow: hidden;
 	float: left;
 }
