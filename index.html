@@ -72,16 +72,17 @@
     }
 
     .main-content {
+      margin: 0 auto;
       display: grid;
-      width: 100%;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      width: 1519px;
+/*      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
     }
     .main-content .item {
       display: grid;
       grid-template-rows: 1fr min-content;
       align-items: center;
       justify-content: center;
-      height: 50vh;
+      height: 600px;
       flex-wrap: wrap;
       background: var(--bg-color);
     }
@@ -92,10 +93,10 @@
     button {
       background: transparent;
       color: #fff;
-      border: 3px solid #fff;
-      border-radius: 50px;
-      padding: 0.8rem 2rem;
-      font: 24px "Margarine", sans-serif;
+      border: 10px solid #fff;
+      border-radius: 100px;
+      padding: 0.8rem 3rem;
+      font: 50px "Margarine", sans-serif;
       outline: none;
       cursor: pointer;
       position: relative;
@@ -107,7 +108,7 @@
       width: 100%;
       text-align: center;
       padding: 0 0 3rem;
-      font: 500 14px 'Rubik', sans-serif;
+      font: 500 50px 'Rubik', sans-serif;
       letter-spacing: .5px;
       text-transform: uppercase;
       text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
@@ -249,45 +250,46 @@
     }
     .button-parrot .parrot:before {
       content: "eat!";
+      font-size: 50px;
     }
     .button-parrot .parrot:nth-child(1) {
-      top: -30px;
-      left: -40px;
+      top: -60px;
+      left: -70px;
       font: 12px/1 "Margarine", sans-serif;
       transform: rotate(-20deg);
-      animation-duration: 0.5s;
+      animation-duration: 1.5s;
     }
     .button-parrot .parrot:nth-child(2) {
       font: 12px/1 "Margarine", sans-serif;
       right: -40px;
-      top: -20px;
+      top: -60px;
       transform: rotate(15deg);
       animation-duration: 0.3s;
     }
     .button-parrot .parrot:nth-child(3) {
       font: 16px/1 "Margarine", sans-serif;
-      top: -60px;
-      left: 15px;
+      top: -90px;
+      left: 80px;
       transform: rotate(10deg);
       animation-duration: 1s;
     }
     .button-parrot .parrot:nth-child(4) {
       font: 18px/1 "Margarine", sans-serif;
-      top: -70px;
-      left: 95px;
+      top: -90px;
+      left: 190px;
       transform: rotate(2deg);
       animation-duration: 0.7s;
     }
     .button-parrot .parrot:nth-child(5) {
       font: 14px/1 "Margarine", sans-serif;
-      top: 80px;
-      left: 105px;
+      top: 120px;
+      left: 130px;
       transform: rotate(-20deg);
       animation-duration: 0.8s;
     }
     .button-parrot .parrot:nth-child(6) {
       font: 12px/1 "Margarine", sans-serif;
-      top: 80px;
+      top: 100px;
       left: 5px;
       transform: rotate(10deg);
       animation-duration: 1.2s;
@@ -309,15 +311,15 @@
     }
     .button-hand button:before {
       content: "👇";
-      font-size: 60px;
+      font-size: 130px;
       transform: scaleX(-1);
       right: 0px;
-      top: -68px;
+      top: -130px;
       animation: up-down 1s infinite;
     }
     .button-hand button .hands:before, .button-hand button .hands:after {
       content: "👇";
-      font-size: 40px;
+      font-size: 80px;
       opacity: 0;
       transition: 0.4s ease-in-out;
     }
@@ -329,15 +331,15 @@
     .button-hand button .hands:after {
       transform: rotate(170deg);
       right: 30px;
-      top: 50px;
+      top: 100px;
     }
     .button-hand button:hover .hands:before {
       opacity: 1;
-      left: -35px;
+      left: -50px;
     }
     .button-hand button:hover .hands:after {
       opacity: 1;
-      top: 40px;
+      top: 100px;
     }
 
     @keyframes up-down {
@@ -438,12 +440,13 @@
       transform: rotate(0);
     }
     .button-rainbow button .rainbow:before {
+      top:-40px;
       content: "🌈";
-      left: 0;
+      left: -40px;
     }
     .button-rainbow button:hover .rainbow {
       opacity: 1;
-      animation: rotate-nonstop 0.2s infinite;
+      animation: rotate-nonstop 1s infinite;
     }
     .button-rainbow button + .name {
       color: white ;
@@ -535,7 +538,8 @@
 <body>
   <div class="white">
     <div class="one">
-      <div class="full-container">
+
+<!--       <div class="full-container">
         <div class="grid-x">
           <div class="cell small-1 medium-2 large-3"></div>
           <div class="cell small-10 medium-8 large-6">
@@ -547,7 +551,8 @@
           </div>
           <div class="cell small-1 medium-2 large-3"></div>
         </div>
-      </div> 
+      </div>  -->
+
       <div class="twotwoone">
         <div class="box" id="box">
           <div class="slider" id="slider">

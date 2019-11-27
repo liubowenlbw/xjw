@@ -23,11 +23,11 @@ html{
 .one{
 	margin: 0 auto;
 	width: 1519px;
-	height: 1000px;
+	height: 1500px;
 	background-color: #ffffff;
 }
 .full-container{
-	top:600px;
+	top:1000px;
 	left: 100px;
 	height: 100px;
 	width: 100px;
