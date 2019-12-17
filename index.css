@@ -26,28 +26,40 @@ html{
 	height: 1500px;
 	background-color: #ffffff;
 }
+.qwer{
+	position: relative;
+	top:-350px;
+	left:1100px;
+	opacity: 1;
+}
+.qwer:hover{
+	position: relative;
+	top:-350px;
+	left:1100px;
+	opacity: 0.5;
+}
 .full-container{
 	top:1000px;
-	left: 100px;
+	left: 1000px;
 	height: 100px;
 	width: 100px;
-	background-color: green;
+	background-color: white;
 	position: relative;
 }
 .button{ 
-    padding:40px;  
+    padding:70px;  
     color: #428bca; 
     text-align: center; 
     vertical-align: middle;  
     font-weight: 900; 
-    font-size:125% 
+    font-size:400% 
 }
 .button{
-    background: gold;
+    background: #c1b5fb;
     border: none;
     border-radius: 50%;
-    width: 200px;
-    height: 100px;
+    width: 400px;
+    height: 200px;
      
 }
 /*.twotwoone{
@@ -108,7 +120,7 @@ html{
 	left: 320px;
 	bottom: 20px;
 }
-.nav>li{
+/*.nav>li{
 	float: left;
 	width: 20px;
 	height: 20px;
@@ -117,7 +129,7 @@ html{
 	margin: 0 3px;
 	border-radius: 50%;
 	text-align: center;
-}
-.nav .active{
+}*/
+/*.nav .active{
 	background: red;
-}
+}*/
