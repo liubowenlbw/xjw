@@ -1,820 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class='mb-event' data-server-country='CN' lang='zh-Hans-CN'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link href="foundation.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="index.css">
-  <script src="index.js"></script>
-  <style>
+<meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover' name='viewport'>
+<meta content='#F55D54' name='theme-color'>
+<title>
+在线看病
+</title>
+<style>
+  /* line 1, (__TEMPLATE__) */
+  html, body {
+    font-family: -apple-system, "SF UI Text", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Zen Hei", sans-serif;
+    font-weight: normal;
+    line-height: 18px;
+    overflow: hidden;
+    height: 100%; }
+  
+  @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2 dppx) {
+    /* line 9, (__TEMPLATE__) */
     body {
-      color: #fff;
-      font-family: "Rubik", sans-serif;
-    }
-
-    .item.footer {
-      flex-wrap: wrap;
-      padding: 5rem;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.7;
-      grid-column: span 1;
-    }
-    @media screen and (min-width: 823px) and (max-width: 1223px) {
-      .item.footer {
-        grid-column: span 2;
-      }
-    }
-    .item.footer a {
-      text-decoration: none;
-      color: #fff;
-      padding: 3px 0;
-      border-bottom: 1px dashed;
-    }
-    .item.footer a:hover {
-      border-bottom: 1px solid;
-    }
-
-    footer {
-      margin-top: 1.5rem;
-    }
-    footer a {
-      text-decoration: none;
-      display: inline-block;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: transparent;
-      border: 1px dashed #fff;
-      color: #fff;
-      margin: 5px;
-    }
-    footer a:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    footer a .icons {
-      margin-top: 8px;
-      display: inline-block;
-      font-size: 20px;
-    }
-    footer a .icons:before {
-      position: relative;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-    *:before, *:after {
-      content: "";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; } }
+  /* line 14, (__TEMPLATE__) */
+  html.is-full-screen {
+    height: 100vh; }
+  
+  /* line 17, (__TEMPLATE__) */
+  body {
+    font-size: 12px;
+    background: #F5F5F5;
+    color: #525E71; }
+    /* line 21, (__TEMPLATE__) */
+    body.mobile {
+      background-color: white; }
+  
+  /* line 24, (__TEMPLATE__) */
+  #download, #header {
+    display: none; }
+  
+  /* line 26, (__TEMPLATE__) */
+  #notification {
+    position: fixed;
+    top: -70px;
+    left: 0; }
+  
+  /* line 31, (__TEMPLATE__) */
+  .notice {
+    padding: 10px;
+    font-size: 14px; }
+    /* line 34, (__TEMPLATE__) */
+    .notice p {
+      margin-bottom: 10px; }
+  
+  /* line 36, (__TEMPLATE__) */
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(51, 54, 58, 0.6) transparent;
+    border-radius: 100%;
+    transform-origin: 50% 50% 0px;
+    -webkit-animation: mb-spin 0.8s infinite linear;
+    animation: mb-spin 0.8s infinite linear;
+    display: inline-block; }
+  
+  @-webkit-keyframes mb-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg); }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg); } }
+  @keyframes mb-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg); }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg); } }
+  /* line 63, (__TEMPLATE__) */
+  #logo, #device {
+    display: none; }
+  
+  /* line 66, (__TEMPLATE__) */
+  #loading {
+    width: 86px;
+    height: 86px;
+    z-index: 2;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -43px;
+    text-align: center;
+    font-size: 12px; }
+    /* line 76, (__TEMPLATE__) */
+    #loading .logo, #loading .indicator {
       position: absolute;
-    }
-
-    .main-content {
-      margin: 0 auto;
-      display: grid;
-      width: 1519px;
-/*      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
-    }
-    .main-content .item {
-      display: grid;
-      grid-template-rows: 1fr min-content;
-      align-items: center;
-      justify-content: center;
-      height: 600px;
-      flex-wrap: wrap;
-      background: var(--bg-color);
-    }
-    .main-content .item:not(.footer) {
-      padding-top: 1rem;
-    }
-
-    button {
-      background: transparent;
-      color: #fff;
-      border: 10px solid #fff;
-      border-radius: 100px;
-      padding: 0.8rem 3rem;
-      font: 50px "Margarine", sans-serif;
-      outline: none;
-      cursor: pointer;
-      position: relative;
-      transition: 0.2s ease-in-out;
-      letter-spacing: 2px;
-    }
-
-    .name {
-      width: 100%;
-      text-align: center;
-      padding: 0 0 3rem;
-      font: 500 50px 'Rubik', sans-serif;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-    }
-
-    .button__wrapper {
-      display: inline-block;
-      position: relative;
-      width: 200px;
-      height: 65px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .button-pulse button {
-      background: var(--bg-color);
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-    }
-    .button-pulse .button__wrapper:hover .pulsing:before {
-      animation: pulsing 0.2s linear infinite;
-    }
-    .button-pulse .button__wrapper:hover .pulsing:after {
-      animation: pulsing1 0.2s linear infinite;
-    }
-
-    .pulsing {
-      width: 99%;
-      height: 99%;
-      border-radius: 50px;
-      z-index: 1;
-      position: relative;
-    }
-    .pulsing:before, .pulsing:after {
-      width: 100%;
-      height: 100%;
-      border: inherit;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      background: #fff;
-      border-radius: inherit;
-      animation: pulsing 2.5s linear infinite;
-    }
-    .pulsing:after {
-      animation: pulsing1 2.5s linear infinite;
-    }
-
-    @keyframes pulsing {
-      0% {
-        opacity: 1;
-        transform: scaleY(1) scaleX(1);
-      }
-      20% {
-        opacity: 0.5;
-      }
-      70% {
-        opacity: 0.2;
-        transform: scaleY(1.8) scaleX(1.4);
-      }
-      80% {
-        opacity: 0;
-        transform: scaleY(1.8) scaleX(1.4);
-      }
-      90% {
-        opacity: 0;
-        transform: scaleY(1) scaleX(1);
-      }
-    }
-    @keyframes pulsing1 {
-      0% {
-        opacity: 1;
-        transform: scaleY(1) scaleX(1);
-      }
-      20% {
-        opacity: 0.5;
-      }
-      70% {
-        opacity: 0.2;
-        transform: scaleY(1.3) scaleX(1.15);
-      }
-      80% {
-        opacity: 0;
-        transform: scaleY(1.3) scaleX(1.15);
-      }
-      90% {
-        opacity: 0;
-        transform: scaleY(1) scaleX(1);
-      }
-    }
-    .button-typewriter button {
-      width: 100%;
-      height: 100%;
-    }
-    .button-typewriter p {
-      animation: typing 4s steps(12) infinite;
-      display: inline-block;
+      top: -3px;
+      left: -3px;
+      width: 86px;
+      height: 86px;
       overflow: hidden;
-      white-space: nowrap;
-    }
-    .button-typewriter .button__wrapper:hover p {
-      animation: blink 0.3s infinite;
-    }
-
-    @keyframes typing {
-      0% {
-        width: 0;
-      }
-      50% {
-        width: 100%;
-      }
-      55%,
-      65%,
-      75% {
-        opacity: 1;
-      }
-      60%,
-      70% {
-        opacity: 0;
-      }
-      80% {
-        width: 100%;
-      }
-      100% {
-        width: 0;
-      }
-    }
-    .button-parrot .parrot {
-      position: absolute;
-      width: 60px;
-      text-align: center;
-      animation: blink 0.8s infinite;
-      color: transparent;
-    }
-    .button-parrot .parrot:before {
-      content: "eat!";
-      font-size: 50px;
-    }
-    .button-parrot .parrot:nth-child(1) {
-      top: -60px;
-      left: -70px;
-      font: 12px/1 "Margarine", sans-serif;
-      transform: rotate(-20deg);
-      animation-duration: 1.5s;
-    }
-    .button-parrot .parrot:nth-child(2) {
-      font: 12px/1 "Margarine", sans-serif;
-      right: -40px;
-      top: -60px;
-      transform: rotate(15deg);
-      animation-duration: 0.3s;
-    }
-    .button-parrot .parrot:nth-child(3) {
-      font: 16px/1 "Margarine", sans-serif;
-      top: -90px;
-      left: 80px;
-      transform: rotate(10deg);
-      animation-duration: 1s;
-    }
-    .button-parrot .parrot:nth-child(4) {
-      font: 18px/1 "Margarine", sans-serif;
-      top: -90px;
-      left: 190px;
-      transform: rotate(2deg);
-      animation-duration: 0.7s;
-    }
-    .button-parrot .parrot:nth-child(5) {
-      font: 14px/1 "Margarine", sans-serif;
-      top: 120px;
-      left: 130px;
-      transform: rotate(-20deg);
-      animation-duration: 0.8s;
-    }
-    .button-parrot .parrot:nth-child(6) {
-      font: 12px/1 "Margarine", sans-serif;
-      top: 100px;
-      left: 5px;
-      transform: rotate(10deg);
-      animation-duration: 1.2s;
-    }
-    .button-parrot button:hover .parrot:before {
-      content: "Click Me!";
-      width: 70px;
-    }
-
-    @keyframes blink {
-      25%,
-      75% {
-        color: transparent;
-      }
-      40%,
-      60% {
-        color: #fff;
-      }
-    }
-    .button-hand button:before {
-      content: "👇";
-      font-size: 130px;
-      transform: scaleX(-1);
-      right: 0px;
-      top: -130px;
-      animation: up-down 1s infinite;
-    }
-    .button-hand button .hands:before, .button-hand button .hands:after {
-      content: "👇";
-      font-size: 80px;
-      opacity: 0;
-      transition: 0.4s ease-in-out;
-    }
-    .button-hand button .hands:before {
-      transform: rotate(-60deg);
-      left: -45px;
-      top: -10px;
-    }
-    .button-hand button .hands:after {
-      transform: rotate(170deg);
-      right: 30px;
-      top: 100px;
-    }
-    .button-hand button:hover .hands:before {
+      background: url("./images/logo-lg.svg");
+      background-size: 86px 86px; }
+    /* line 85, (__TEMPLATE__) */
+    #loading .logo {
+      opacity: 0.3; }
+    /* line 87, (__TEMPLATE__) */
+    #loading .indicator {
       opacity: 1;
-      left: -50px;
-    }
-    .button-hand button:hover .hands:after {
-      opacity: 1;
-      top: 100px;
-    }
-
-    @keyframes up-down {
-      50% {
-        margin-top: -20px;
-      }
-    }
-    .button-100 .emoji {
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      height: 0%; }
+    /* line 93, (__TEMPLATE__) */
+    #loading span {
       position: absolute;
-      top: -45px;
-      left: 0;
-      width: 35px;
-      height: 35px;
-      overflow: hidden;
-    }
-    .button-100 .emoji:before {
-      content: "💯";
-      display: inline-block;
-      animation: give-score 2.5s infinite;
-      position: relative;
-      top: 0;
-    }
-    .button-100 .emoji:nth-child(2) {
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-    .button-100 .emoji:nth-child(2):before {
-      animation: give-score 2.5s infinite 0.2s;
-    }
-    .button-100 .emoji:nth-child(3) {
-      left: auto;
-      right: 0;
-    }
-    .button-100 .emoji:nth-child(3):before {
-      animation: give-score 2.5s infinite 0.4s;
-    }
-    .button-100 button:hover .emoji:before {
-      content: "👏";
-      transition: 0.5s ease;
-    }
+      width: 300px;
+      left: 50%;
+      top: 110px;
+      margin-left: -150px;
+      font-size: 14px;
+      line-height: 28px;
+      color: #F77D77; }
+</style>
+<style>
+  /* line 1, (__TEMPLATE__) */
+  ::-webkit-scrollbar-track {
+    background-color: transparent; }
+  
+  /* line 4, (__TEMPLATE__) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; }
+  
+  /* line 8, (__TEMPLATE__) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #DEDEE4;
+    border-radius: 4px; }
+  
+  /* line 12, (__TEMPLATE__) */
+  ::-webkit-scrollbar-corner {
+    background-color: transparent; }
+</style>
 
-    @keyframes give-score {
-      30%,
-      80% {
-        top: 0;
-      }
-      40%,
-      70% {
-        top: 50px;
-      }
-    }
-    .button-pressure marquee {
+<style>
+  /* line 1, (__TEMPLATE__) */
+  #splash {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f0f0f2; }
+    /* line 10, (__TEMPLATE__) */
+    #splash.is-landscape img {
+      top: 50%;
+      left: 50%;
+      width: 100vh;
+      height: 100vw;
+      transform: translate(-50%, -50%) rotate(-90deg); }
+    /* line 17, (__TEMPLATE__) */
+    #splash img {
       position: absolute;
-      width: 90%;
-      top: 125%;
-      left: 5%;
-      font: 18px/1 "Margarine", sans-serif;
-    }
-    .button-pressure marquee span {
-      display: inline-block;
-      height: 20px;
-    }
-    .button-pressure marquee span:not(:last-child) {
-      margin-right: 130px;
-    }
-    .button-pressure button:before {
-      content: "OMG YAS";
-      transition: 0.5s ease;
+      top: 0px;
       left: 0;
-      right: 0;
-      margin: auto;
-      top: -15px;
-      font-size: 12px;
-      opacity: 0;
-    }
-    .button-pressure button:hover:before {
-      animation: omg-yes 1s;
-    }
-/*    .button-rainbow{
-      background: blue;
-    }*/
-    .button-rainbow button {
-      animation: rainbow 3s infinite, heartbeat 0.6s infinite;
-      background: #c0392b;
-    }
-    .button-rainbow button .rainbow {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 100%;
+      height: 100%; }
+    /* line 24, (__TEMPLATE__) */
+    #splash .spinner {
       position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
-      top: -40px;
-      transition: 0.5s ease;
-      opacity: 0;
-      transform: rotate(0);
-    }
-    .button-rainbow button .rainbow:before {
-      top:-40px;
-      content: "🌈";
-      left: -40px;
-    }
-    .button-rainbow button:hover .rainbow {
-      opacity: 1;
-      animation: rotate-nonstop 1s infinite;
-    }
-    .button-rainbow button + .name {
-      color: white ;
-    }
+      top: 50%;
+      left: 50%;
+      margin-top: -15px;
+      margin-left: -15px; }
+</style>
 
-    @keyframes rotate-nonstop {
-      50% {
-        transform: rotate(92deg);
-      }
-    }
-    @keyframes omg-yes {
-      50% {
-        opacity: 1;
-      }
-      100% {
-        top: -50px;
-      }
-    }
-    @keyframes rainbow {
-      0% {
-        background: #1abc9c;
-      }
-      10% {
-        background: #2ecc71;
-      }
-      20% {
-        background: #3498db;
-      }
-      30% {
-        background: #9b59b6;
-      }
-      40% {
-        background: #e74c3c;
-      }
-      50% {
-        background: #e67e22;
-      }
-      60% {
-        background: #f1c40f;
-      }
-      70% {
-        background: #2c3e50;
-      }
-      80% {
-        background: #9b59b6;
-      }
-    }
-    .button-jittery button {
-      animation: jittery 4s infinite;
-    }
-    .button-jittery button:hover {
-      animation: heartbeat 0.2s infinite;
-    }
-
-    @keyframes jittery {
-      5%,
-      50% {
-        transform: scale(1);
-      }
-      10% {
-        transform: scale(0.9);
-      }
-      15% {
-        transform: scale(1.15);
-      }
-      20% {
-        transform: scale(1.15) rotate(-5deg);
-      }
-      25% {
-        transform: scale(1.15) rotate(5deg);
-      }
-      30% {
-        transform: scale(1.15) rotate(-3deg);
-      }
-      35% {
-        transform: scale(1.15) rotate(2deg);
-      }
-      40% {
-        transform: scale(1.15) rotate(0);
-      }
-    }
-    @keyframes heartbeat {
-      50% {
-        transform: scale(1.1);
-      }
-    }
-  </style>
 </head>
-<body>
+<body data-server-country='CN' data-server='free.modao.cc' data-user-id=''>
+<div id='loading'>
+<div class='logo'></div>
+<div class='indicator' style='height: 30%'></div>
+<span>
+正在读取 在线看病…
+</span>
+</div>
+<div id='workspace'></div>
+<link rel="stylesheet" media="screen" href="./css/hosted-fonts.css" />
 
-  <div class="white">
-
-    <div class="one">
-
-<!--       开始 -->
-      <div class="full-container">
-        <div class="grid-x">
-          <div class="cell small-1 medium-2 large-3"></div>
-          <div class="cell small-10 medium-8 large-6">
-            <form onsubmit="return false;">
-              <label for="upload-file" class="button">上传图片</label>
-              <input type="file" id="upload-file" class="show-for-sr" value="" onchange="uploadImage(this);">
-            </form>
-            <p id="ret-tip" class="help-text" style="color:#4a4a4f;"></p>
-          </div>
-          <div class="cell small-1 medium-2 large-3"></div>
-        </div>
-        <div class="grid-x">
-          <div class="cell hide-for-small-only medium-1 large-2"></div>
-          <div class="cell small-12 medium-10 large-8" style="padding:0.6rem;">
-            <div class="grid-x" id="image-list"></div>
-          </div>
-          <div class="cell hide-for-small-only medium-1 large-2"></div>
-        </div>
-        <div id="asd"><a id="qwertyuq" href="http://106.54.163.195:8080/txt-result" target="mainFrame1"> 预测结果</a></div>
- <!--  <iframe name="mainFrame1" style="width: 70px; height: 50px;"> -->
-      </div>
-<!-- 结束 -->
-      <div class="twotwoone">
-        <div class="box" id="box">
-          <div class="slider" id="slider">
-            <div class="slide"><img src="img/bann6.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann1.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann2.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann3.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann4.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann5.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann6.jpeg" alt="" height="949" width="1519"></div>
-            <div class="slide"><img src="img/bann1.jpeg" alt="" height="949" width="1519"></div>
-          </div>
-          <span id="left">
-<!--             <img src="img/btn.gif"> -->
-          </span>
-          <span id="right">
-<!--             <img src="img/btn.gif"> -->
-          </span>
-          <ul class="nav" id="nav">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-      </div>
-      <img src="img/logo.png" class="qwer">
-
-      <iframe src="" name="mainFrame1" id="qwertyu"></iframe>
-    </div>
-<!--     按钮开始 -->
-    <div class="htmleaf-container">
-  <!--    <header class="htmleaf-header">
-        <h1>8种CSS3按钮动画特效 <span>CSS Animations: Obvious CTA Buttons</span></h1>
-        <div class="htmleaf-links">
-          <a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
-          <a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/css3/ui-design/201904045594.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
-        </div>
-      </header> -->
-      <div class="main-content">
-<!--         <div class="item button-jittery" style="--bg-color: #f1c40f;">
-          <button>Click Me!</button>
-          <div class="name">Subtlety</div>
-        </div> -->
-<!--         <div class="item button-pulse" style="--bg-color: #e67e22;">
-          <div class="button__wrapper">
-            <div class="pulsing"></div>
-            <button>Click Me!</button>
-          </div>
-          <div class="name">Dubstep</div>
-        </div> -->
-<!--         <div class="item button-typewriter" style="--bg-color: #e74c3c;">
-          <div class="button__wrapper">
-            <button>
-              <p>Click Me!</p>
-            </button>
-          </div>
-          <div class="name">Typewriter</div>
-        </div> -->
-<!--         <div class="item button-pressure" style="--bg-color: #9b59b6;">
-          <button>Click Me!
-            <marquee scrollamount="12"><span>Your friends would do it.</span><span>Your mum would be proud.</span><span>Your partner would be so happy.</span><span>Your cat would love you for it.</span></marquee>
-          </button>
-          <div class="name">Social Pressure</div>
-        </div> -->
-        <div class="item button-hand" style="--bg-color: #aee0ff;">
-          <a href="../前端子页面相克/01-2.html">
-          <button>Attention!
-            <div class="hands"></div>
-          </button>
-          </a>
-          <div class="name">Handsy</div>
-        </div>
-<!--         <div class="item button-100" style="--bg-color:#2ecc71;">
-          <button>Click Me!
-            <div class="emoji"></div>
-            <div class="emoji"></div>
-            <div class="emoji"></div>
-          </button>
-          <div class="name">You're 💯</div>
-        </div> -->
-        <div class="item button-parrot" style="--bg-color: #ffb9e7;">
-          <a href="../前端子页面搭配/01-3.html">
-          <button>eat eat eat!
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-          </button>
-          </a>
-          <div class="name">Encouragement</div>
-        </div>
-        <div class="item button-rainbow" style="--bg-color: #98ffba;">
-          <button>Run!
-            <div class="rainbow"></div>
-          </button>
-          <div class="name">Rainbow</div>
-        </div>
-
-
-      </div>
-  <!--    <div class="related">
-          <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
-          <a href="http://www.htmleaf.com/css3/ui-design/201903125560.html">
-          <img src="related/1.jpg" width="300" alt="扩展bootstrap4按钮特效"/>
-          <h3>扩展bootstrap4按钮特效</h3>
-        </a>
-        <a href="http://www.htmleaf.com/jQuery/Buttons-Icons/201810255384.html">
-          <img src="related/2.jpg" width="300" alt="js和css3带反光特效的按钮插件"/>
-          <h3>js和css3带反光特效的按钮插件</h3>
-        </a>
-      </div> -->
-    </div>
-<!--     按钮结束 -->
-
-
-
-
-
-
-  </div>
-
-  <script>
-    var _apiurl = 'http://106.54.163.195:8080';
-    function uploadImage (t) {
-      document.getElementById('ret-tip').innerHTML = '上传中···';
-      t.disabled = true;
-      var f = new FormData();
-      f.append('image', t.files[0]);
-      fetch('http://106.54.163.195:8080/upload-image', {
-        method : 'POST',
-        mode : 'cors',
-        body : f
-      }).then(res => {
-        return res.json();
-      }).then(d => {
-        document.getElementById('ret-tip').innerHTML = JSON.stringify(d);
-        _imglist.unshift(d.data.filename);
-        showImageList(_imglist);
-      }).catch (err => {
-        console.log(err);
-      }).finally(() => {
-        t.disabled = false;
-      });
-    }
-
-    var _imglist = [];
-
-    function getImageList () {
-      fetch(_apiurl+'/images').then(res => {
-        return res.json();
-      }).then(d => {
-        _imglist = d;
-        showImageList(d);
-      });
-    }
-
-    function showImageList(imgs) {
-      var html = '';
-      for (let i=0; i<imgs.length; i++) {
-        html = `<div class="cell small-12 medium-4 large-3" style="padding:0.2rem;">
-            <img  src="${_apiurl}/image/${imgs[0]}">
-          </div>`;
-      }
-      document.getElementById('image-list').innerHTML = html;
-    }
-
-    window.onload = function () {
-      getImageList();
-    };
-  </script>
-</body>
-<script type="text/javascript">
-    /*轮播图开始*/
-    var box = document.getElementById('box');
-    var oNavlist = document.getElementById('nav').children;
-    var slider = document.getElementById('slider');
-    var left = document.getElementById('left');
-    var right = document.getElementById('right');
-    var index = 1;
-    var timer;
-    var isMoving = false;
-    box.onmouseover = function(){
-      animate(left,{opacity:100})
-      animate(right,{opacity:100})
-      clearInterval(timer)
-    }
-    box.onmouseout = function(){
-      animate(left,{opacity:0})
-      animate(right,{opacity:0})
-      timer = setInterval(next, 100);
-    }
-    right.onclick = next;
-    left.onclick = prev;
-    for( var i=0; i<oNavlist.length; i++ ){
-      (function(i){
-        oNavlist[i].onclick = function(){
-          index = i+1;
-          navmove();
-          animate(slider,{left:-1519*index});
-        }
-      })(i);
-    }
-    function next(){
-      if(isMoving){
-        return;
-      }
-      isMoving = true;
-      index++;
-      navmove();
-      animate(slider,{left:-1519*index},function(){
-        if(index==7){
-          slider.style.left = '-1519px';
-          index = 1;
-        }
-        isMoving = false;
-      });
-    }
-    function prev(){
-      if(isMoving){
-        return;
-      }
-      isMoving = true;
-      index--;
-      navmove();
-      animate(slider,{left:-1519*index},function(){
-        if(index==0){
-          slider.style.left = '-9114px';
-          index = 6;
-        }
-        isMoving = false;
-      });
-    }
-    function navmove(){
-      for( var i=0; i<oNavlist.length; i++ ){
-        oNavlist[i].className = "";
-      }
-      if(index >6 ){
-        oNavlist[0].className = "active";
-      }else if(index<=0){
-        oNavlist[5].className = "active";
-      }else {
-        oNavlist[index-1].className = "active";
-      }
-    }
-    timer = setInterval(next, 3000);
-    /*结束*/
+<link rel="stylesheet" media="screen" href="./webpack/vendor-a52fb5d993047e66bd30.css" />
+<link rel="stylesheet" media="screen" href="./webpack/html-zip-v3-c231c35510c73c738dac.css" />
+<script>
+  var RELEASE_HASH = "b9fd6f6aa8ce12cca78a5c9fddc6c43afbf0bf1b"
+  var MBServer = "free.modao.cc"
+  
+  window.MB = window.MB || {}
+  MB.serverCountry = "CN"
 </script>
+
+<script src="./webpack/webpack-runtime-f142a5b201ada3f666bc.js"></script>
+<script src="./webpack/vendor-0c2dd40352a6ab77bae8.js"></script>
+<script src="./webpack/html-zip-v3-c75ef5b5e0a9381c8f3a.js"></script>
+<script>
+  $(function () {
+    if (MB.isMobile()) $('body').addClass('mobile')
+  
+    MB.load({
+      projectAccessToken        : 'adca8873e70b0322716c182278515d9059bede65',
+      projectEncryptedPassword  : '',
+      projectName               : '在线看病',
+      projectIconUrl            : '/images/icon_retina3x.png',
+      projectUpdatedAt          : '2020-03-12T18:44:24+08:00',
+      isPasswordRequired        : false,
+      isProjectExportable       : true,
+      urlClientIOS              : 'https://itunes.apple.com/cn/app/mockingbot/id1050565468?ls=1&amp;mt=8',
+      urlClientAndroid          : 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mockingbot'
+    })
+  })
+</script>
+<script>
+  window.ga = function () {}
+  window.zhuge = { identify: function () {}, track: function () {} }
+</script>
+<script>window["hzv3"] = window["hzv3"] || {}</script>
+<script src="data.0.js"></script>
+<script src="data.1.js"></script>
+<script src="data.2.js"></script>
+<script src="data.3.js"></script>
+</body>
 </html>
